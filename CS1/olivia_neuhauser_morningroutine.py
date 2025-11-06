@@ -31,6 +31,9 @@ if 'resources' in user_welcome:
                 print_colored_text('You see a fishing boat nearby.','cyan')
                 fishing = input('Do you wave or yell? ').lower()
 
+            else:
+                print('Please enter a valid response with containing the words woods or beach.')
+
                 if 'wave' in fishing:
                     print_colored_text('The driver does not see you and steers away. You lay down on the beach and accept your fate.','red')
                     
