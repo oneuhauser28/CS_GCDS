@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h1 style="background-color:rgb(84, 202, 217);">----Rock, Paper, Scissors----</h1>
+<p style="background-color:rgb(231, 160, 130);">Let's play! Choose one of the following options: </p>
+
+<div style="display:flex; justify-content: center; gap: 20px;">
+<button value="rock" id = "rock">
+<img src="https://png.pngtree.com/png-vector/20250614/ourmid/pngtree-big-rock-stone-isolated-on-transparent-background-png-image_16534636.png" width="250" height="300" >
+</button>
+
+<button value="scissors" id = "scissors">
+<img src="https://img.pikbest.com/png-images/20241023/scissors-png-isolated-on-transparent-background-high-quality_10995751.png!bw700" width="250" height="300">
+</button>
+
+<button value="paper" id = "paper">
+<img src="https://png.pngtree.com/png-clipart/20221223/original/pngtree-stylish-ripped-torn-paper-texture-background-transparent-png-image_8797583.png" width="250" height="300">
+</button>
+</div>
+
+<p>You chose: <span id="displayValue"></span></p>
+
+<h2>--Scoreboard--</h2>
+<p>Player:<span id="pScore">0</span></p>
+<p>Computer:<span id="cScore">0</span></p>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+function fireConfetti() {
+    confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+    });
+}
+function main() {
+    var pScore = 0;
+    var cScore = 0;
+
+    const options = ["rock", "paper", "scissors"];
+    const displayElement = document.getElementById("displayValue");
+    const pScoredisplayElement = document.getElementById("pScore");
+    const cScoredisplayElement = document.getElementById("cScore");
+
+
+    function play(userRps) {
+        const randomIndex = Math.floor(Math.random() * options.length);
+        const compRps = options[randomIndex];
+        displayElement.textContent = userRps;
+
+        alert("User chose: " + userRps + " Computer chose: " + compRps);
+
+        if (userRps === compRps) {
+            alert("You tied!");
+        } else if (
+            (userRps === "rock" && compRps === "scissors") ||
+            (userRps === "paper" && compRps === "rock") ||
+            (userRps === "scissors" && compRps === "paper")
+        ) {
+            alert("You win!");
+            pScore++; 
+            fireConfetti();
+        } else {
+            alert("Computer wins!");
+            cScore++;
+        } 
+        pScoredisplayElement.textContent = pScore
+        cScoredisplayElement.textContent = cScore
+    }
+
+    document.getElementById("rock").addEventListener("click", () => play("rock"));
+    document.getElementById("paper").addEventListener("click", () => play("paper"));
+    document.getElementById("scissors").addEventListener("click", () => play("scissors"));
+}
+
+main();
+</script>
+</body>
+</html>
