@@ -1,18 +1,17 @@
 import random                                                               #imports the random library
+import time 
 
 def prechorus():                                                            #new function called prechorus
     '''
     Prechorus of a song to reduce lines needed for a song
     Args: 
         No parameters
-    
     Return/Print: 
     prechorus(str): The lyrics written for the prechorus are printed when the function is called
-
     Raises: 
-        No error detection
+        None
     '''
-
+    time.sleep(0.5)
     print("""                                                            
 No fears alone at night, she's sailing through the crowd
 In her ears the phones are tight and the music's playing loud
@@ -25,13 +24,12 @@ def chorus():                                                               #new
     Chorus of a song to reduce lines needed for a song
     Args: 
         No parameters
-
     Return/Print: 
     chorus(str): The lyrics written for the chorus are printed when the function is called
-
     Raises: 
-        No error detection
+        None
     '''
+    time.sleep(0.5)
     print("""
 She gets rock n' roll, on a rock n roll station
 And a rock n roll dream
@@ -50,13 +48,12 @@ def sing_song():                                                            #new
     Function which uses previous function prechorus and chorus to reduce lines needed to print the lyrics of a song
     Args: 
         No parameters
-    
     Return/Print: 
         song(str): The lyrics of the entire song using functions prechorus and chorus
-
     Raises: 
-        No error detection
+        None
     '''
+    time.sleep(0.5)
     print("""
 I seen a girl on a one way corridor
 Stealing down a wrong way street
@@ -68,6 +65,7 @@ But the roller girl she's taking chances
 They just love to see her take them all
           """ )                                                             #prints first part of song lyrics
     prechorus()                                                             #calls prechorus function
+    time.sleep(0.5)
     print("""
 Hallelujah, here she comes
 Queen roller ball
@@ -80,6 +78,7 @@ She's the only, only one
           """)                                                              #prints next part of song lyrics
     prechorus()                                                             #calls prechorus function
     chorus()                                                                #calls chorus function
+    time.sleep(0.5)
     print("""
 She tortures taxi drivers just for fun
 She likes to read their lips
@@ -92,6 +91,7 @@ The city's been so rude to her
           """)                                                              #prints next part of song lyrics 
     prechorus()                                                             #calls prechorus function
     chorus()                                                                #calls chorus function
+    time.sleep(0.5)
     print("""
 Slipping and sliding
 Yeah, life's roller ball
@@ -107,27 +107,53 @@ Skate away
 def add(a,b):                                                               #new function called add 
     '''
     Function which adds two numbers together
-
     Args: 
         a(int): First number given
         b(int): Second number given
-
     Return/Print: 
         a+b(int): Prints the value of the numbers combined
-
     Raises: 
-        No error detection
+        None
     '''
     print(a + b)                                                            #prints the value of two given numbers combined
 
 def print_list(alist):
+    '''
+    Function which takes a list and prints every element in that list individually 
+    Args:
+        alist(list): List provided by user
+    Return/Print:
+        item(str): Prints each element in the provided list
+    Raises: 
+        None
+    '''
     for item in alist:
         print(item)
 
 def in_list(alist, element):
+    '''
+    Function which checks whether or not a given element is in a given list
+    Args:
+        alist(list): list provided by user
+        element(str): element provided by user
+    Return/Print: 
+        element in alist(bool): returns True or False based on whether or not provided element is in the list
+    Raises: 
+        Checks whether or not the element is in the list
+    '''
     return element in alist
+    
 
 def is_integer(value):
+    '''
+    A function that checks whether an inputted value is a valid integer 
+    Args: 
+        value(int): value to be checked 
+    Return/Print:
+        value(bool): returns True or False based on whether or not the input is an integer
+    Raises:
+        ValueError: if the value given is not an integer, it returns False
+    '''
     try:
         int(value)
         return True
@@ -135,19 +161,36 @@ def is_integer(value):
         return False
 
 def get_integer(prompt):
+    '''
+    Function which takes and stores a given value as long as it is an integer
+    Args: 
+        prompt(str): the question asked to the user to get the value that will be checked
+    Return/Print:
+        number(int): if the input is an integer, returns the input
+        prints "Please enter a whole number" if the input is not an integer(str)
+    Raises:
+        ValueError: if the user does not provide a whole number value, they will be informed
+    '''
     while True: 
-        user_input = input(prompt)
-        try: 
-            number = float(user_input)
-            if number.is_integer():
-                return int(number)  
-            else:
-                print("Please enter a whole number. ")
-        except ValueError: 
-            print("Invalid input, please enter a number. ")
+        val = input(prompt)
+        number = float(val)
+        if number.is_integer():
+            return int(number)  
+        else:
+            print("Please enter a whole number. ")
+
 
  
 def get_random():
+    '''
+    Function that displays a random number between two given numbers inputted by the user
+    Args:
+        None
+    Return/Print:
+        Prints random number between the smallest and largest value given(str)
+    Raises: 
+        None
+    '''
     n1 = get_integer("Enter first number: ")
     n2 = get_integer("Enter second number: ")
     if n1 < n2:
@@ -159,6 +202,15 @@ def get_random():
 
 
 def count_vowels(string):
+    '''
+    Function to count the amount of vowels in a word inputted by the user
+    Args: 
+        string(str): the word given by the user
+    Return/Print:
+        count(int): returns amount of vowels in given word
+    Raises: 
+        None
+    '''
     vowels = ["a", "e", "i", "o", "u"]           
     count = 0                                           
 
@@ -167,42 +219,163 @@ def count_vowels(string):
             count +=1 
     
     return count
+    
 
-def reverse_string():
-    original = input("Please enter word you would like reversed: ")
-    print(original[::-1])
+def reverse_string(string):
+    '''
+    Function to reverse the letters in a word inputted by the user
+    Args: 
+        string(str): the word given by the user
+    Return/Print:
+        string[::-1](str): returns the given word reversed
+    Raises: 
+        None
+    '''
+    return(string[::-1])
 
 
 def is_palindrome(): 
-    word = input("Please enter the word you would like to check: ")
-    return
-    #check if word and reverse are equal
-    #if yes, return true
-    #if no, return false
-    #print is this a palindrome? yes/no
+    '''
+    Function that checks whether a word inputted by the user is a palindrome (same backwards as forward)
+    Args:  
+        None
+    Return/Print:
+        prints confirmation of whether or not the word is a palindrome(str)
+        return True(bool): if word is palindrome returns true
+        return False(bool): if word is not palindrome returns false
+    Raises: 
+        None
+    '''
+    word = input("Please enter the word you would like to check: ").lower()
+    if word == reverse_string(word):
+        print(f"Yes, {word} is a palindrome. ")
+        return True
+    else: 
+        print(f"No, {word} is not a palindrome.")
+        return False
 
 
-def get_initials(name): 
-    name = input("Please enter your first and last name separated by spaces: ").split(" ")
-    #take index 1 of each word
-    #print or return index one with f"initials are: {}"
+def get_initials(): 
+    '''
+    A function which takes a name and returns the initials of the name
+    Args: 
+        None
+    Return/Print:
+        first_initial.last_initial(str): returns initials of given name
+    Raises: 
+        None
+    '''
+    full_name = input("Please enter your first and last name separated by spaces: ") #asks user for first and last name separated by spaces
 
-def replace_character(character):
-    ''''''
+    names = full_name.split(" ")                  #splits submitted name into separate items in a list based on the space between them
+    first_initial = names[0][0].upper()           #variable first_initial takes first letter of first word in name, turns uppercase
+    last_initial = names[1][0].upper()            #variable last_initial takes first letter of second word in name, turns uppercase
+
+    return(f"{first_initial}.{last_initial}.")     #stores the capitalized initals with a period between them
+
+
+def replace_character(word, old_letter, new_letter):
+    '''
+    A function which takes a string, an old character and a new character, and replaces every instance of the old character in the string of the old character with the new.
+    Args: 
+        word(str): word to go through and replace characters in
+        old_letter(str): letter which will be replaced
+        new_letter(str): letter which will replace all instances of old_letter
+    Return/Print:
+        result(str): prints the result of replaceing all of a certain letter in a given word with a different letter
+    Raises: 
+        None
+    '''
+    result = ""
+
+    for letter in word: 
+        if letter == old_letter:
+            result += new_letter
+        
+        else:
+            result += letter
+
+    print(result)
+
+def main(): 
+    '''
+    Main function with a menu for user to call any of the previous functions
+    Args: 
+        None
+    Return/Print: 
+        depending on what choice the user makes, uses choice of function
+    Raises: 
+        ValueError: If user makes a selection that is not on the list, they will be informed and returned to the menu. 
+    '''
+    while True: 
+        time.sleep(2)
+        print("\n---Options---")
+        print("1. Sing song (Skateaway - Dire Straits)")
+        print("2. Add two numbers together")
+        print("3. Display a list you provide")
+        print("4. Check whether an element is in a list you provide")
+        print("5. Check whether a given input is an integer")
+        print("6. Check whether a given input is an integer and store it")
+        print("7. Display a random number between two given numbers")
+        print("8. Count the number of vowels in a given word")
+        print("9. Reverse a given word")
+        print("10. Check whether a given word is a palindrome")
+        print("11. Return the initials of a given name")
+        print("12. Replace all instances of a certain letter in a given word with a different letter")
+        choice = input("Enter your selection(1-12): ")
+
+        if choice == "1":
+            sing_song()
+
+        elif choice == "2":
+            first = int(input("Enter your first number: "))
+            second = int(input("Enter your second number: "))
+            add(first, second)
+
+        elif choice == "3": 
+            mylist = input("Please enter a list separated by spaces: ").split(" ")
+            print_list(mylist)
+
+        elif choice == "4": 
+            mlist = input("Please enter a list separated by spaces: ").split(" ")
+            myelement = input("Please enter element to be checked: ")
+            print(in_list(mlist, myelement))
+
+        elif choice == "5": 
+            check = input("Please enter value to be checked: ")
+            print(is_integer(check))
+
+        elif choice == "6": 
+            result = get_integer("Please enter value to be checked and stored: ")
+            print(f"Stored value: {result}")
+
+        elif choice == "7":
+            get_random() 
+
+        elif choice == "8": 
+            vowels = input("Please enter a word for the vowels to be counted: ")
+            print(count_vowels(vowels))
+
+        elif choice == "9":
+            reverse = input("Please enter word you would like reversed: ").lower()
+            print(reverse_string(reverse))
+
+        elif choice == "10":
+            is_palindrome()
+        
+        elif choice == "11":
+            print(get_initials())
+
+        elif choice == "12":
+            alter = input("Please enter word or phrase you would like to alter: ")
+            replace = input("Please enter character you would like to replace: ")
+            new = input("Please enter new character you would like to use to replace the old character: ")
+            replace_character(alter, replace, new)
+
+        else: 
+            print("Please enter a valid input (any number from 1-12).")
+            continue
+
+main()
+
             
-
-
-def main():
-    sing_song()
-    add(5,5)
-    user_list = input("Enter list using spaces to separate items ").split(" ")
-    print_list(user_list)
-    element = input("Enter check: ")
-    in_list(user_list, element)
-    alist = input("Please enter a list of items separated by spaces: ").split(" ")
-    print_list(alist)
-
-
-
-
-
